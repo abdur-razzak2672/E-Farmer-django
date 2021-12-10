@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/store.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>E Farmer</title>
+</head>
+<body>
+    
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bxl-twitch'></i>
+                <div class="logo_name">E-Farmer</div>
+            </div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="#">
+                    <i class = 'bx bx-search'></i>
+                    <input type="text" placeholder="Search...">
+                </a>
+                <span class="tooltip">Search</span>
+            </li>
+            <li>
+                <a href="{% url 'homepage' %}">
+                    <i class = 'bx bx-home-alt'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="{% url 'store' %}">
+                    <i class = 'bx bx-cart-alt'></i>
+                    <span class="links_name">store</span>
+                </a>
+                <span class="tooltip">Dashbord</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-book-reader'></i>
+                    <span class="links_name">Agri Instractions</span>
+                </a>
+                <span class="tooltip">Agri instractions</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-first-aid'></i>
+                    <span class="links_name">Agri Solutions</span>
+                </a>
+                <span class="tooltip">instractions</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-message-rounded-dots'></i>
+                    <span class="links_name">Messege</span>
+                </a>
+                
+                <span class="tooltip">messege</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="{% static 'images/pic.jpg' %}" alt="">
+                    <div class="name_job">
+                        <div class="name">Md. Abdur Razzak</div>
+                        <div class="job">Farmer</div>
+                    </div>
+                </div>
+                <i class = 'bx bx-log-out' id = "logout"></i>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        {% block content %}
+
+
+
+        {% endblock content %}
+    </div>
+ 
+
+
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+        let searchBtn = document.querySelector(".bx-search");
+
+        btn.onclick = function(){
+            sidebar.classList.toggle("active");
+        }
+        searchBtn.onclick = function(){
+            sidebar.classList.toggle("active")
+        }
+        
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>

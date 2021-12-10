@@ -1,0 +1,43 @@
+{% extends 'farmer/main.html' %}
+{% load static %}
+{% block content %}
+<div class="mt-4 pt-5 d-flex flex-row-reverse bd-highlight">
+	<button  class = "m-3 bg-warning p-2 rounded " data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">PESTICIDE</button>
+	<button  class = "m-3 bg-info p-2 rounded " data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">FARTILIZER</button>
+	<button  class = "m-3 bg-primary p-2 rounded " data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">SEEDS  </button>
+	<h1 style="padding-right : 450px;" class="pt-3"  >Agri Product</h1>	
+  </div>
+ 
+
+<div class="items mt-5">
+	{% for product in products %}
+	<div class="item">
+		<img class="thumbnail p-2" src="{{product.imageURL}}">
+		<div class="item-details">
+			<div class="p-2 d-flex justify-content-between" style = "display: flex; ">
+				<h5><strong>{{product.name}}</strong></h5>
+				<h5><strong>${{product.price}}</strong></h5>
+			</div>
+			<div class="rating pl-2">
+				<i class = 'bx bxs-star text-warning'></i>
+				<i class = 'bx bxs-star text-warning'></i>
+				<i class = 'bx bxs-star text-warning'></i>
+				<i class = 'bx bxs-star text-warning'></i>
+				<i class = 'bx bx-star'></i>
+			</div>
+			<div class="item_info p-2 d-flex justify-content-between">
+				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<a class="btn btn-outline-success " href="#">View</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+<p class="text-center text-warning pt-3">copy right <i class='bx bx-copyright'></i> E Farmer</p>
+
+
+{% endblock content %}
+
+
+
+
