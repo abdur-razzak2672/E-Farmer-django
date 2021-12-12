@@ -1,12 +1,24 @@
 {% extends 'farmer/main.html' %}
 {% load static %}
 {% block content %}
-	<div class="row">
-		<div class="col-lg-12">
+<div class="navbar p-3 bg-info d-flex justify-content-between">
+	<a href="{% url 'store' %}">
+		<img id="logo" src="{% static 'images/logo/logo.png' %}">
+	</a>
+	<div class="form-inline my-2 my-lg-0 cart_logo">
+		<img  id="cart-icon" src="{% static 'images/logo/transaction.jpg' %}">	
+		<a href="{% url 'cart' %}">
+			<img  id="cart-icon" src="{% static 'images/logo/cart.jpg' %}">
+		</a>
+		<p id="cart-total">{{cartItems}}</p>
+	</div>	
+</div>
+
+<div class="cart_items mt-5 pt-5">
+	<div class="p-3 ">
+		<div class="p-3">
 			<div class="box-element">
-
 				<a  class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Continue Shopping</a>
-
 				<br>
 				<br>
 				<table class="table">
@@ -14,13 +26,12 @@
 						<th><h5>Items: <strong>{{order.get_cart_items}}</strong></h5></th>
 						<th><h5>Total:<strong> ${{order.get_cart_total|floatformat:2}}</strong></h5></th>
 						<th>
-							<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+							<a  style="float:right; margin:5px; color: #81be26; font-weight: 600; background-color:#183a29;" class="btn" href="{% url 'checkout' %}">Checkout</a>
 						</th>
 					</tr>
 				</table>
 
 			</div>
-
 			<br>
 			<div class="box-element">
 				<div class="cart-row">
@@ -38,9 +49,9 @@
 					<div style="flex:1">
 						<p class="quantity">{{item.quantity}}</p>
 						<div class="quantity">
-							<img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
+							<img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'images/logo/up.png' %}">
 					
-							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
+							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'images/logo/down.png' %}">
 						</div>
 					</div>
 					<div style="flex:1"><p>${{item.get_total|floatformat:2}}</p></div>
@@ -49,4 +60,8 @@
 			</div>
 		</div>
 	</div>
+	
+</div>
+
+
 {% endblock content %}

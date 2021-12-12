@@ -12,6 +12,37 @@ class Customer(models.Model):
 		return self.name
 
 
+class PesticideProduct(models.Model):
+	name = models.CharField(max_length=200)
+	price = models.FloatField()
+	digital = models.BooleanField(default=False,null=True, blank=True)
+	image = models.ImageField(null=True, blank=True)
+	def __str__(self):
+			return self.name
+
+	@property
+	def imageURL(self):
+		try:
+			url = self.image.url
+		except:
+			url = ''
+		return url
+class FartilizerProduct(models.Model):
+	name = models.CharField(max_length=200)
+	price = models.FloatField()
+	digital = models.BooleanField(default=False,null=True, blank=True)
+	image = models.ImageField(null=True, blank=True)
+	def __str__(self):
+			return self.name
+
+	@property
+	def imageURL(self):
+		try:
+			url = self.image.url
+		except:
+			url = ''
+		return url
+
 class Product(models.Model):
 	name = models.CharField(max_length=200)
 	price = models.FloatField()
@@ -81,3 +112,15 @@ class ShippingAddress(models.Model):
 
 	def __str__(self):
 		return self.address
+
+
+# Agri Instractions 
+
+class AgriInstraction(models.Model):
+    name = models.CharField(max_length = 100)
+    description = models.CharField(max_length=100)
+    image = models.ImageField(upload_to = 'farmer/images')
+    url = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.name

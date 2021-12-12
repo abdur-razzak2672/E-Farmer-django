@@ -6,3 +6,11 @@
     background-size: cover;
 
 }
+
+
+*,*::before,*::after {
+    box-sizing: border-box;
+  }
+   
+   
+  

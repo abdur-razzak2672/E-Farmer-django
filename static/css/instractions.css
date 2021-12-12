@@ -1,0 +1,54 @@
+.instractions_item{
+	border: 1px solid #111;
+    height: 100%;
+  
+}
+ 
+
+.instractions_items{
+    display: grid;
+    grid-gap: 20px;
+    place-items: center;
+
+ 
+}
+
+.instractions_items{
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+
+ 
+.instractions_iitem-info{
+    display: flex;
+}
+
+
+.sidebar.active ~ .main .cart_logo{
+ 
+    width: 300px;
+    
+}
+ 
+
+@media (max-width : 992px) {
+    .instractions_items{
+        grid-template-columns: repeat(3, 1fr);
+    }
+   
+}
+
+@media (max-width : 715px) {
+    .instractions_items{
+        grid-template-columns: repeat(2, 1fr);
+    }
+   
+}
+@media (max-width : 500px) {
+    .instractions_items{
+        grid-template-columns: repeat(1, 1fr);
+    }
+   
+    
+}

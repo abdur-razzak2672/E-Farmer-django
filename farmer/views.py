@@ -2,13 +2,37 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import json
 import datetime
-from .models import * 
+from .models.seedModels import * 
 from .utils import cookieCart, cartData, guestOrder
 
 
 def homepage(request):
      context = {}
      return render(request, 'farmer/homepage.html', context)
+
+
+def fartilizer(request):
+	data = cartData(request)
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	products = FartilizerProduct.objects.all()
+	context = {'products':products, 'cartItems':cartItems}
+	return render(request, 'farmer/store/fartilizer.html',context)
+
+
+
+def pesticide(request):
+	data = cartData(request)
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	products = PesticideProduct.objects.all()
+	context = {'products':products, 'cartItems':cartItems}
+	return render(request, 'farmer/store/pesticide.html',context)
+
+
+
 
 def store(request):
 	data = cartData(request)
@@ -40,7 +64,7 @@ def checkout(request):
 	items = data['items']
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
-	return render(request, 'store/checkout.html', context)
+	return render(request, 'farmer/store/checkout.html', context)
 
 def updateItem(request):
 	data = json.loads(request.body)
@@ -96,4 +120,11 @@ def processOrder(request):
 
 	return JsonResponse('Payment submitted..', safe=False)
 
+# Agri instractions
+
+
+def instraction(request):
+	instractions = AgriInstraction.objects.all()
+	context = {'instractions':instractions}
+	return render(request, 'farmer/agri_instractions/instractions.html', context)
 

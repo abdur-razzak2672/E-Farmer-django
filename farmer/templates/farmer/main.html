@@ -11,10 +11,106 @@
     <link rel="stylesheet" href="{% static 'css/store.css' %}">
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/instractions.css' %}">
+ 
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.convform.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <title>E Farmer</title>
+    <script type="text/javascript">
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+		function getCookie(name) {
+		    // Split cookie string and get all individual name=value pairs in an array
+		    var cookieArr = document.cookie.split(";");
+
+		    // Loop through the array elements
+		    for(var i = 0; i < cookieArr.length; i++) {
+		        var cookiePair = cookieArr[i].split("=");
+
+		        /* Removing whitespace at the beginning of the cookie name
+		        and compare it with the given string */
+		        if(name == cookiePair[0].trim()) {
+		            // Decode the cookie value and return
+		            return decodeURIComponent(cookiePair[1]);
+		        }
+		    }
+
+		    // Return null if not found
+		    return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined){
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+	
+	</script>
+
+    <style>
+        
+  /*ChatBot*/
+  .chat_icon{
+      position: fixed;
+      bottom: 0;
+      right: 30px;
+      padding: 0;
+      font-size: 80px;
+      color: #006AFF;
+      cursor: pointer;
+  }
+  .chat_box{
+      width: 340px;
+      height: 80vh;
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      border-radius: 6px;
+      background:#dedede;
+      z-index: 1000;
+      transition: all 0.3s ease-out;
+      transform: scaleY(0);
+  }
+  .chat_box.active{
+      transform: scaleY(1);
+  }
+  #messages{
+      padding: 20px;
+  }
+  .my-conv-form-wrapper textarea{
+      height: 30px;
+      overflow: hidden;
+      resize: none;
+  }
+  .hidden{
+      display: none !important;
+  }
+  
+
+    </style>
 </head>
 <body>
+    
     
     <div class="sidebar">
         <div class="logo_content">
@@ -32,6 +128,14 @@
                 </a>
                 <span class="tooltip">Search</span>
             </li>
+            
+            <li>
+                <a href="{% url 'homepage' %}">
+                    <i class = 'bx bx-home-alt'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
             <li>
                 <a href="{% url 'homepage' %}">
                     <i class = 'bx bx-home-alt'></i>
@@ -47,7 +151,7 @@
                 <span class="tooltip">Dashbord</span>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'instractions' %}">
                     <i class='bx bx-book-reader'></i>
                     <span class="links_name">Agri Instractions</span>
                 </a>
@@ -83,8 +187,45 @@
         </div>
     </div>
     <div class="main">
-        {% block content %}
 
+                <!-- ChatBot -->
+        <div class="chat_icon">
+            <i class='bx bxl-messenger'aria-hidden="true"></i>
+        </div>
+
+        <div class="chat_box">
+            <div class="my-conv-form-wrapper">
+                <form action="" method="GET" class="hidden">
+
+            <select data-conv-question="Hello! How can I help you" name="category">
+                <option value="WebDevelopment">Buy Agri Product ?<br></option>
+                <option value="DigitalMarketing">Find Solutions?</option>
+            </select>
+
+            <div data-conv-fork="category">
+                <div data-conv-case="WebDevelopment">
+                <input type="text" name="domainName" data-conv-question="Please, tell me how many Buy Product">    
+                </div>
+                <div data-conv-case="DigitalMarketing" data-conv-fork="first-question2">
+                <input type="text" name="companyName" data-conv-question="Please, tell Me What is your problem"> 
+                </div>
+            </div>
+
+            <input type="text" name="name" data-conv-question="Please, go to agri Officer his contact no 019384546">
+
+            <input type="text" data-conv-question="Hi {name}, <br> It's a pleasure to meet you." data-no-answer="true">
+
+            <input data-conv-question="Enter your e-mail" data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" type="email" name="email" required placeholder="thank you?">
+
+            <select data-conv-question="Please Conform">
+                <option value="Yes">Conform</option>
+            </select>
+
+            </form>
+            </div>
+        </div>
+        <!-- ChatBot end -->
+        {% block content %}
 
 
         {% endblock content %}
@@ -111,5 +252,8 @@
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.convform.js' %}"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@ body{
   }
 .item{
 	border: 1px solid #111;
+    height: 100%;
 }
  
 
@@ -39,12 +40,6 @@ body{
     display: flex;
 }
 
-.filled{
-    color: goldenrod;
-}
-.unfilled{
-    color: lightgray;
-}
 
 .sidebar.active ~ .main .cart_logo{
  
@@ -83,11 +78,14 @@ body{
 
 /*cart item*/
  
- 
-
-h1,h2,h3,h4,h5,h6{
-	color:hsl(0, 0%, 30%);
+.box-element{
+	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+	background-color: #9b7d01;
+	border-radius: 4px;
+	padding: 10px;
 }
+
+
  
  
 
@@ -126,7 +124,10 @@ h1,h2,h3,h4,h5,h6{
 
 .btn{
 	border-radius: 0;
+
 }
+
+
 
 .row-image{
 	width: 100px;
