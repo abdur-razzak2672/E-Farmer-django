@@ -4,7 +4,22 @@ import json
 import datetime
 from .models.seedModels import * 
 from .utils import cookieCart, cartData, guestOrder
+from django.db.models import Q
 
+def search(request):
+    	
+	if request.method=="POST":
+		data = cartData(request)
+		cartItems = data['cartItems']
+	 
+		searched =request.POST['searched']
+		productItems = Product.objects.filter(name__contains =searched)
+		context = {'searched':searched, 'productItems':productItems, 'cartItems':cartItems}
+		return render(request , 'farmer/store/search.html', context)
+	else:
+		g
+
+    		
 
 def homepage(request):
      context = {}

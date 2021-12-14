@@ -41,19 +41,19 @@
 			</div>
 			<div class="item_info p-2 d-flex justify-content-between">
 				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-				<button type="button" class="btn btn-outline-success "  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >View</button>
+				<button data-product="{{product.id}}"   type="button" class="btn btn-outline-success "  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >View</button>
 
 
-				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div data-product="{{product.id}}"  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Honda CBR 300R</h5>
+						<h5 data-product="{{product.id}}"  class="modal-title" id="staticBackdropLabel"><strong>{{product.name}}</strong></h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
 						</div>
 						<div class="modal-body">
-							<img src="images/cbr.PNG" alt="">
-							<h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab fuga obcaecati quibusdam similique provident soluta molestias fugit, dolore facilis sapiente saepe qui architecto animi ex quis minus! Quisquam, natus aut.</h4>
+							<img data-product="{{product.id}}"  class="thumbnail text-center p-2" src="{{product.imageURL}}">
+							<h5 data-product="{{product.id}}" ><strong>{{product.name}}</strong></h5>
 						</div>
 						<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -1,0 +1,84 @@
+{% extends 'farmer/main.html' %}
+{% load static %}
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div class="navbar p-3 bg-info d-flex justify-content-between">
+	<a href="{% url 'store' %}">
+		<img id="logo" src="{% static 'images/logo/logo.png' %}">
+	</a>
+	<div class="form-inline my-2 my-lg-0 cart_logo">
+		<img  id="cart-icon" src="{% static 'images/logo/transaction.jpg' %}">	
+		<a href="{% url 'cart' %}">
+		   <img  id="cart-icon" src="{% static 'images/logo/cart.jpg' %}">
+	   </a>
+	   <p id="cart-total">{{cartItems}}</p>
+
+   </div>	
+</div>
+{% if searched %}
+    <h1 style="margin-top: 70px;" class=" p-5">You Searched For {{ searched }}</h1>
+        
+    <div class="items P-5 mt-5">
+        {% for productItem in productItems %}
+        <div class="item">
+            <img class="thumbnail p-2" src="{{productItem.imageURL}}">
+            <div class="item-details">
+                <div class="p-2 d-flex justify-content-between" style = "display: flex; ">
+                    <h5><strong>{{productItem.name}}</strong></h5>
+                    <h5><strong>${{productItem.price}}</strong></h5>
+                </div>
+                <div class="rating pl-2">
+                    <i class = 'bx bxs-star text-warning'></i>
+                    <i class = 'bx bxs-star text-warning'></i>
+                    <i class = 'bx bxs-star text-warning'></i>
+                    <i class = 'bx bxs-star text-warning'></i>
+                    <i class = 'bx bx-star'></i>
+                </div>
+                <div class="item_info p-2 d-flex justify-content-between">
+                    <button data-product="{{productItem.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                    <button data-product="{{productItem.id}}"   type="button" class="btn btn-outline-success "  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >View</button>
+
+
+                    <div data-product="{{productItem.id}}"  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 data-product="{{productItem.id}}"  class="modal-title" id="staticBackdropLabel"><strong>{{productItem.name}}</strong></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                            </div>
+                            <div class="modal-body">
+                                <img data-product="{{productItem.id}}"  class="thumbnail text-center p-2" src="{{productItem.imageURL}}">
+                                <h5 data-product="{{productItem.id}}" ><strong>{{product.name}}</strong></h5>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <p class="text-center text-warning pt-3">copy right <i class='bx bx-copyright'></i> E Farmer</p>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+    {% else %}
+    <h1>Hei! You Forgot To Search a value</h1>
+
+
+
+
+{% endif %}
+
+
+
+
+
+
+{% endblock %}

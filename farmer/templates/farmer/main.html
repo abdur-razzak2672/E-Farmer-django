@@ -122,26 +122,29 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="#">
-                    <i class = 'bx bx-search'></i>
-                    <input type="text" placeholder="Search...">
-                </a>
-                <span class="tooltip">Search</span>
+                <form method = POST action="{% url 'search' %}" >
+                    {% csrf_token %}
+                    <a href="#">
+                        <i class = 'bx bx-search'></i>
+                        <input  class="form-control" type="search" name="searched" area-label="Search" placeholder="Search...">
+                    </a>
+                    <span class="tooltip">Search</span>
+                </form>
+                
             </li>
-            
             <li>
                 <a href="{% url 'homepage' %}">
                     <i class = 'bx bx-home-alt'></i>
                     <span class="links_name">Home</span>
                 </a>
-                <span class="tooltip">Home</span>
             </li>
+            
             <li>
                 <a href="{% url 'store' %}">
                     <i class = 'bx bx-cart-alt'></i>
                     <span class="links_name">store</span>
                 </a>
-                <span class="tooltip">Dashbord</span>
+                <span class="tooltip">store</span>
             </li>
             <li>
                 <a href="{% url 'instractions' %}">
@@ -151,20 +154,22 @@
                 <span class="tooltip">Agri instractions</span>
             </li>
             <li>
-                <a href="#">
-                    <i class='bx bx-first-aid'></i>
-                    <span class="links_name">Agri Solutions</span>
-                </a>
-                <span class="tooltip">instractions</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-message-rounded-dots'></i>
+                <a href="{% url 'instractions' %}">
+                    <i class='bx bx-book-reader'></i>
                     <span class="links_name">Messege</span>
                 </a>
                 
                 <span class="tooltip">messege</span>
             </li>
+            <li>
+                <a href="{% url 'instractions' %}">
+                    <i class='bx bx-book-reader'></i>
+                    <span class="links_name">Agri Solutions</span>
+                </a>
+                <span class="tooltip">Agri Solutions</span>
+            </li>
+            
+            
         </ul>
         <div class="profile_content">
             <div class="profile">
