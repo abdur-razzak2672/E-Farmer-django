@@ -1,18 +1,6 @@
 {% extends 'farmer/main.html' %}
 {% load static %}
 {% block content %}
-<div class="navbar p-3 bg-info d-flex justify-content-between">
-	<a href="{% url 'store' %}">
-		<img id="logo" src="{% static 'images/logo/logo.png' %}">
-	</a>
-	<div class="form-inline my-2 my-lg-0 cart_logo">
-		<img  id="cart-icon" src="{% static 'images/logo/transaction.jpg' %}">	
-		<a href="{% url 'cart' %}">
-			<img  id="cart-icon" src="{% static 'images/logo/cart.jpg' %}">
-		</a>
-		<p id="cart-total">{{cartItems}}</p>
-	</div>	
-</div>
 
 <div class="cart_items mt-5 pt-5">
 	<div class="p-3 ">

@@ -10,7 +10,14 @@ body{
     width: 100%;
  
 }
-
+.navbar {
+    background-color: #183a29 !important;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 95%;
+  }
+ 
 .sidebar{
     position: fixed;
     top: 0;
@@ -76,6 +83,8 @@ body{
     line-height: 50px;
    
 }
+
+ 
 /*
 .sidebar ul li .tooltip{
     position: absolute;
@@ -106,7 +115,7 @@ body{
     top: 50%;
 }
 */
-.sidebar ul li input{
+.sidebar  ul li form input{
     position: absolute;
     height: 100%;
     width: 100%;
@@ -264,4 +273,11 @@ body{
     left: 240px;
 
  }
+
+ .sidebar.active ~ .num{
+ 
+    right: 40px;
+
+ }
+ 
  

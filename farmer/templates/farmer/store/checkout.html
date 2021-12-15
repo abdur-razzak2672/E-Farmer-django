@@ -1,19 +1,7 @@
 {% extends 'farmer/main.html' %}
 {% load static %}
 {% block content %}
-<div class="navbar p-3 bg-info d-flex justify-content-between">
-    <a href="{% url 'store' %}">
-        <img id="logo" src="{% static 'images/logo/logo.png' %}">
-    </a>
-    <div class="form-inline my-2 my-lg-0 cart_logo">
-        <img  id="cart-icon" src="{% static 'images/logo/transaction.jpg' %}">	
-        <a href="{% url 'cart' %}">
-            <img  id="cart-icon" src="{% static 'images/logo/cart.jpg' %}">
-        </a>
-        <p id="cart-total">{{cartItems}}</p>
-    </div>	
-</div>
-    
+  
     <div class="mt-5 pt-5">
         <div class="row p-5 pt-5">
             <div class="col-lg-6">
@@ -42,7 +30,7 @@
                                 <input required class="form-control" type="text" name="name" placeholder="Name..">
                             </div>
                             <div class="form-field">
-                                <input required class="form-control" type="email" name="email" placeholder="Email..">
+                                <input required class="form-control" type="text" name="phone" placeholder="Phone Number..">
                             </div>
                         </div>
                         
@@ -119,7 +107,7 @@
 
 			var userFormData = {
 				'name':null,
-				'email':null,
+				'phone':null,
 				'total':total,
 			}
 			var shippingInfo = {
@@ -137,7 +125,7 @@
 			}
 			if (user == 'AnonymousUser'){
 	    		userFormData.name = form.name.value
-	    		userFormData.email = form.email.value
+	    		userFormData.phone = form.phone.value
 	    	}
 
 	    	console.log('Shipping Info:', shippingInfo)

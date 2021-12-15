@@ -13,8 +13,8 @@ def search(request):
 		cartItems = data['cartItems']
 	 
 		searched =request.POST['searched']
-		productItems = Product.objects.filter(name__contains =searched)
-		context = {'searched':searched, 'productItems':productItems, 'cartItems':cartItems}
+		products = Product.objects.filter(name__contains =searched)
+		context = {'searched':searched, 'productItems':products, 'cartItems':cartItems}
 		return render(request , 'farmer/store/search.html', context)
 	else:
 		g
@@ -22,8 +22,10 @@ def search(request):
     		
 
 def homepage(request):
-     context = {}
-     return render(request, 'farmer/homepage.html', context)
+	data = cartData(request)
+	cartItems = data['cartItems']
+	context = {'cartItems':cartItems}
+	return render(request, 'farmer/homepage.html', context)
 
 
 def fartilizer(request):
@@ -139,26 +141,41 @@ def processOrder(request):
 
 
 def instraction(request):
+    	
+	data = cartData(request)
+	cartItems = data['cartItems']
 	instractions = AgriInstraction.objects.all()
-	context = {'instractions':instractions}
+	context = {'instractions':instractions ,'cartItems':cartItems}
 	return render(request, 'farmer/agri_instractions/instractions.html', context)
 
 
 def solution(request):
+    	    	
+	data = cartData(request)
+	cartItems = data['cartItems']
 	solutions = AgriSolution.objects.all()
-	context = {'solutions':solutions}
+	context = {'solutions':solutions,'cartItems':cartItems}
 	return render(request, 'farmer/solution.html', context)
 
 def loan(request):
-     context = {}
-     return render(request, 'farmer/loan.html', context)
+    	    	
+	data = cartData(request)
+	cartItems = data['cartItems']
+	context = {'cartItems':cartItems}
+	return render(request, 'farmer/loan.html', context)
 
 
 def profile(request):
-     context = {}
-     return render(request, 'farmer/profile.html', context)
+    	    	
+	data = cartData(request)
+	cartItems = data['cartItems']
+	context = {'cartItems':cartItems}
+	return render(request, 'farmer/profile.html', context)
 
 
 def about(request):
-     context = {}
-     return render(request, 'farmer/about.html', context)
+    	    	
+	data = cartData(request)
+	cartItems = data['cartItems']
+	context = {'cartItems':cartItems}
+	return render(request, 'farmer/about.html', context)

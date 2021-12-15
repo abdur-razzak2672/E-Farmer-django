@@ -3,18 +3,7 @@
 {% block content %}
 
 <div style = "background-image: url('{% static "images\bg.jpg" %}');" class="home">
-    <div class="nav   d-flex justify-content-between">
-        <a href="{% url 'store' %}">
-            <img id="logo" src="{% static 'images/logo/logo.png' %}">
-        </a>
-        <div id="login" class="form-inline my-2 my-lg-0 mr-5 login">
-            <a href="{% url 'login' %}">
-                <button class = "m-3 bg-info p-2 rounded "data-action="add" class="btn btn-outline-secondary">Login</button>
-
-           </a>
-        </div>	
-    </div>
-    <div class="title">
+    <div class="title mt-5 pt-5">
         <h1 class="text-center">E Farmer System Solution For Farmer</h1>
         
     </div>
@@ -24,16 +13,11 @@
     </div>
 
     <div class="text-center mt-3">
-        <button class = "m-3 bg-info p-2 rounded " data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Go to Market</button>
-        <button  class = "m-3 bg-info p-2 rounded " data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Find Solution</button>
+        <a href="{% url 'store' %}"> <button class = "m-3 bg-info p-2 rounded " data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Go to Market</button></a>
+        <a href="{% url 'solution' %}">> <button  class = "m-3 bg-info p-2 rounded " data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Find Solution</button></a>
     </div>
     
 </div>
 
-<script>
-    if(user!='AnonymousUser'){
-		document.getElementById('login').innerHTML = ''
-    }
-</script>
 
 {% endblock content %}

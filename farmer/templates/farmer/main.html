@@ -110,7 +110,6 @@
     </style>
 </head>
 <body>
-
     
     <div class="sidebar">
         <div class="logo_content">
@@ -121,31 +120,20 @@
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav_list">
-            <li>
-                <form method = POST action="{% url 'search' %}" >
-                    {% csrf_token %}
-                    <a href="#">
-                        <i class = 'bx bx-search'></i>
-                        <input  class="form-control" type="search" name="searched" area-label="Search" placeholder="Search...">
+            <div id="profile">
+                <li >
+                    <a  href="{% url 'profile' %}">
+                        <img class="ml-2" style="width: 35px; height: 35px; object-fit: cover; border-radius: 12px;" src="{% static 'images/pic.jpg' %}" alt="">
+                        <span class="links_name pl-3">My Profile</span>
                     </a>
-                </form>
-                
-            </li>
+                </li>
+            </div>
             <li>
                 <a href="{% url 'homepage' %}">
                     <i class = 'bx bx-home-alt'></i>
                     <span class="links_name">Home</span>
                 </a>
             </li>
-            <div id="profile">
-                <li >
-                <a  href="{% url 'profile' %}">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">My Profile</span>
-                </a>
-            </li>
-            </div>
-            
             
             <li>
                 <a href="{% url 'store' %}">
@@ -181,6 +169,7 @@
             
             
         </ul>
+        {% if user.is_authenticated %}
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
@@ -190,11 +179,21 @@
                         <div class="job"> </div>
                     </div>
                 </div>
-                <i class = 'bx bx-log-out' id = "logout"></i>
+                <li>
+            
+                    <form action="{% url 'logoutuser' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link" id="lbtn"><i class = 'bx bx-log-out' id = "logout"></i></button>
+                        </form>
+                        
+                </li>
+             
             </div>
         </div>
+        {% endif %}
     </div>
     <div class="main">
+        {% include "farmer/navbar.html" %}
         
     
                 <!-- ChatBot -->
@@ -233,7 +232,7 @@
             </form>
             </div>
         </div>
-        <div class="">
+        <div class="main">
             {% if messages %}
                 {% for message in messages %}
             
