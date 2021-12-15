@@ -10,4 +10,5 @@ admin.site.register(ShippingAddress)
 admin.site.register(FartilizerProduct)
 admin.site.register(PesticideProduct)
 admin.site.register(AgriInstraction)
+admin.site.register(AgriSolution)
 

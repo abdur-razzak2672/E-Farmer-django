@@ -76,7 +76,7 @@
       right: 30px;
       padding: 0;
       font-size: 80px;
-      color: #006AFF;
+      color: #b94a0a;
       cursor: pointer;
   }
   .chat_box{
@@ -110,7 +110,7 @@
     </style>
 </head>
 <body>
-    
+
     
     <div class="sidebar">
         <div class="logo_content">
@@ -128,7 +128,6 @@
                         <i class = 'bx bx-search'></i>
                         <input  class="form-control" type="search" name="searched" area-label="Search" placeholder="Search...">
                     </a>
-                    <span class="tooltip">Search</span>
                 </form>
                 
             </li>
@@ -138,35 +137,46 @@
                     <span class="links_name">Home</span>
                 </a>
             </li>
+            <div id="profile">
+                <li >
+                <a  href="{% url 'profile' %}">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">My Profile</span>
+                </a>
+            </li>
+            </div>
+            
             
             <li>
                 <a href="{% url 'store' %}">
                     <i class = 'bx bx-cart-alt'></i>
                     <span class="links_name">store</span>
                 </a>
-                <span class="tooltip">store</span>
             </li>
             <li>
                 <a href="{% url 'instractions' %}">
                     <i class='bx bx-book-reader'></i>
                     <span class="links_name">Agri Instractions</span>
                 </a>
-                <span class="tooltip">Agri instractions</span>
             </li>
             <li>
-                <a href="{% url 'instractions' %}">
-                    <i class='bx bx-book-reader'></i>
-                    <span class="links_name">Messege</span>
-                </a>
-                
-                <span class="tooltip">messege</span>
-            </li>
-            <li>
-                <a href="{% url 'instractions' %}">
-                    <i class='bx bx-book-reader'></i>
+                <a href="{% url 'solution' %}">
+                    <i class='bx bx-help-circle'></i>
                     <span class="links_name">Agri Solutions</span>
                 </a>
-                <span class="tooltip">Agri Solutions</span>
+            </li>
+
+            <li>
+                <a href="{% url 'loan' %}">
+                    <i class='bx bx-money-withdraw'></i>
+                    <span class="links_name">Loan</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="links_name">About</span>
+                </a>
             </li>
             
             
@@ -176,8 +186,8 @@
                 <div class="profile_details">
                     <img src="{% static 'images/pic.jpg' %}" alt="">
                     <div class="name_job">
-                        <div class="name">Abdur Razzak</div>
-                        <div class="job">Farmer</div>
+                        <div class="name">{{user}}</div>
+                        <div class="job"> </div>
                     </div>
                 </div>
                 <i class = 'bx bx-log-out' id = "logout"></i>
@@ -185,7 +195,8 @@
         </div>
     </div>
     <div class="main">
-
+        
+    
                 <!-- ChatBot -->
         <div class="chat_icon">
             <i class='bx bxl-messenger'aria-hidden="true"></i>
@@ -222,6 +233,17 @@
             </form>
             </div>
         </div>
+        <div class="">
+            {% if messages %}
+                {% for message in messages %}
+            
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button style="margin-left: 600px;" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
         <!-- ChatBot end -->
         {% block content %}
 
@@ -243,6 +265,12 @@
             sidebar.classList.toggle("active")
         }
         
+    </script>
+
+    <script>
+        if(user == 'AnonymousUser'){
+            document.getElementById('profile').innerHTML = ''
+        }
     </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 

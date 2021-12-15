@@ -13,5 +13,10 @@ urlpatterns = [
 	path('update_item/', views.updateItem, name="update_item"),
 	path('process_order/', views.processOrder, name="process_order"),
     path('instractions/', views.instraction, name="instractions"),
+    path('loan/', views.loan, name="loan"),
+    path('solutions/', views.solution, name="solution"),
+    path('about/', views.about, name="about"),
+    path('profile/', views.profile, name="profile"),
+
 
 ]

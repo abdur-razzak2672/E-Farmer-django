@@ -143,3 +143,22 @@ def instraction(request):
 	context = {'instractions':instractions}
 	return render(request, 'farmer/agri_instractions/instractions.html', context)
 
+
+def solution(request):
+	solutions = AgriSolution.objects.all()
+	context = {'solutions':solutions}
+	return render(request, 'farmer/solution.html', context)
+
+def loan(request):
+     context = {}
+     return render(request, 'farmer/loan.html', context)
+
+
+def profile(request):
+     context = {}
+     return render(request, 'farmer/profile.html', context)
+
+
+def about(request):
+     context = {}
+     return render(request, 'farmer/about.html', context)
