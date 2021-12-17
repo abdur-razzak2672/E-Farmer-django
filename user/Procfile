@@ -1,1 +1,1 @@
-web:gunicorn E_Farmer.wsgi
+web: gunicorn E_Farmer.wsgi
