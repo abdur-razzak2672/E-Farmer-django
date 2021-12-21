@@ -1,5 +1,9 @@
 from pathlib import Path
 import os
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63c2412343007fd9937801ab9787add02e8c4f74
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -99,6 +103,10 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63c2412343007fd9937801ab9787add02e8c4f74
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -108,4 +116,7 @@ MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
+<<<<<<< HEAD
  
+=======
+>>>>>>> 63c2412343007fd9937801ab9787add02e8c4f74
