@@ -3,25 +3,86 @@
 {% block content %}
 
 <h1 style="padding-top : 100px;" class="text-center mt-5"  >How To Cultivate Crops</h1>
+  
+<div id="accordion">
+    <button class="btn btn-primary m-5" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Puddy</button>
 
-<div class="instractions_items mt-5 pt-5 p-5 ">
-	{% for instracton in instractions %}
-	<div class="pb-5">
-		<div class="instractions_item">
-			<div class="h-100">
-                <img style="border-radius: 10px;" src="{{ instracton.image.url }}"  class="card-img-top  p-2"  >
-                <div class="card-body">
-                    <h5 class="card-title">{{ instracton.name }}</h5>
-                    <p class="card-text">{{ instracton.description }}</p>
-                    {% if instracton.url %}
-                    <h6><a style="text-decoration: none;color: tomato;" href="{{ instracton.url }}">Show Details...</a></h6>
-                    {% endif %}
-                </div>    
+<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    <div class="instractions_items pl-5 ">
+        {% for instracton in instractions %}
+        <div class="pb-5">
+            <div class="instractions_item">
+                <div class="h-100">
+                    <img style="border-radius: 10px;" src="{{ instracton.image.url }}"  class="card-img-top  p-2"  >
+                    <div class="card-body">
+                        <h5 class="card-title">{{ instracton.name }}</h5>
+                        <p class="card-text">{{ instracton.description }}</p>
+                        {% if instracton.url %}
+                        <h6><a style="text-decoration: none;color: tomato;" href="{{ instracton.url }}">Show Details...</a></h6>
+                        {% endif %}
+                    </div>    
+                </div>
             </div>
-		</div>
-	</div>
-	{% endfor %}
+        </div>
+        {% endfor %}
+    </div>
 </div>
+
+
+
+
+   
+<div id="accordion2">
+    <button class="btn btn-primary m-5" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Puddy</button>
+
+<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion2">
+    <div class="instractions_items pl-5 ">
+        {% for instracton in instractions %}
+        <div class="pb-5">
+            <div class="instractions_item">
+                <div class="h-100">
+                    <img style="border-radius: 10px;" src="{{ instracton.image.url }}"  class="card-img-top  p-2"  >
+                    <div class="card-body">
+                        <h5 class="card-title">{{ instracton.name }}</h5>
+                        <p class="card-text">{{ instracton.description }}</p>
+                        {% if instracton.url %}
+                        <h6><a style="text-decoration: none;color: tomato;" href="{{ instracton.url }}">Show Details...</a></h6>
+                        {% endif %}
+                    </div>    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>  
+
+
+
+
+<div id="accordion3">
+    <button class="btn btn-primary m-5" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Puddy</button>
+
+<div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion3">
+    <div class="instractions_items pl-5 ">
+        {% for instracton in instractions %}
+        <div class="pb-5">
+            <div class="instractions_item">
+                <div class="h-100">
+                    <img style="border-radius: 10px;" src="{{ instracton.image.url }}"  class="card-img-top  p-2"  >
+                    <div class="card-body">
+                        <h5 class="card-title">{{ instracton.name }}</h5>
+                        <p class="card-text">{{ instracton.description }}</p>
+                        {% if instracton.url %}
+                        <h6><a style="text-decoration: none;color: tomato;" href="{{ instracton.url }}">Show Details...</a></h6>
+                        {% endif %}
+                    </div>    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>        
+
 
 <p class="text-center text-warning pt-3">copy right <i class='bx bx-copyright'></i> E Farmer</p>
 
