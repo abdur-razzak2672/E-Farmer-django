@@ -2,8 +2,51 @@
 {% load static %}
 {% block content %}
 
- 
-<h1 style="padding-top : 100px;" class="text-center mt-5"  >Hello This Is {{ user }}</h1>
+<h1 style="padding-top : 50px;" class="mt-5 ml-5"  >{{ user }}</h1>
+<p class="ml-5"><a href=""> Home Page</a> / <a href="">Profile</a></p>
+
+<div class="m-5">
+  <div class="profile_items gy-5">
+    <div class="w-75 ml-5 ">
+      <div style="background-color: #e9c99e;" class="p-3 border border">
+        <div class="text-center">
+          <img class = "w-50 rounded" src="{% static 'images/pic.jpg' %}" class="rounded" alt="...">
+          <h4 class="mt-3 w-99" >{{ user }}</h4>
+        </div>
+        <div class="text-center mt-5 icons">
+          <a class="m-2" href=""><i class='bx bxl-facebook-circle'></i></a>
+          <a class="m-2" href=""><i style="color: green;" class='bx bxl-whatsapp-square'></i></a>
+          <a class="m-2" href=""><i  style="color: blue;" class='bx bxl-skype'></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="w-100 style">
+      <div style="background-color: #e9c99e;" class="p-3 border">
+        <h1 class="text-center">Edit Profile</h1>
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Name </label>
+            <input type="text" class="form-control" placeholder="name">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" placeholder="phone number">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="email" class="form-control" placeholder="Email">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Address</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
