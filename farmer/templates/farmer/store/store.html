@@ -28,16 +28,18 @@
 			<div class="item_info p-2 d-flex justify-content-between">
 				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
 				<button data-product="{{product.id}}"   type="button" class="btn btn-outline-success update-cart "  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >View</button>
+				
 				<div data-product="{{product.id}}"  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel"><strong>{{product.name}}</strong></h5>
+						<h5 class="modal-title text-center" id="staticBackdropLabel"><strong>{{product.name}}</strong></h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
 						</div>
-						<div class="modal-body">
-							<img class="thumbnail text-center p-2" src="{{product.imageURL}}">
-							<h5><strong>{{product.name}}</strong></h5>
+						<div class="modal-body text-center">
+							<img class="thumbnail" src="{{product.imageURL}}">
+							<h5 class="text-center"><strong>{{product.name}}</strong></h5>
+							<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque nam aut illo, doloremque beatae asperiores nisi velit laudantium a nulla amet totam quaerat saepe minima pariatur eum error quas earum.</p>
 						</div>
 						<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
