@@ -1,0 +1,35 @@
+
+.forms_items{
+
+    margin-top: 150px;
+}
+.form_control{
+
+    background-color: #e9c99e;
+    margin: auto;
+    width: 30%;
+    border: 3px solid green;
+    padding: 10px;
+
+    
+}
+.form_control1{
+
+    background-color: #e9c99e;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+
+    
+}
+.reg{
+    text-decoration: none;
+    color: black;
+    background-color: green;
+}
+.reg:hover{
+    background-color: #e9c99e;
+    color: green;
+    border: 1px solid green;
+}
