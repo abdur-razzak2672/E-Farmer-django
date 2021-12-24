@@ -4,27 +4,128 @@
 
 <h1 style="padding-top : 100px;" class="text-center mt-5"  >What is your Problem ???</h1>
 
-<div class="instractions_items mt-5 pt-5 p-5 ">
-	{% for solution in solutions %}
-	<div class="pb-5">
-		<div class="instractions_item">
-			<div class="h-100">
-                <img style="border-radius: 10px;" src="{{ solution.image.url }}"  class="card-img-top  p-2"  >
-                <div class="card-body">
-                    <h1 class="card-title">{{ solution.name }}</h1>
-                    <h2 class="card-title">{{ solution.title }}</h2>
-                    <p class="card-text">{{ solution.description }}</p>
-                    {% if solution.url %}
-                    <h6><a style="text-decoration: none;color: tomato;" href="{{ solution.url }}">Show Details...</a></h6>
-                    {% endif %}
-                </div>    
+<section>
+    <h2 class="section-title">Solutions For Puddy</h2>
+    <div class="solutions">
+        {% for solution in solutions %}
+        <article class="solution">
+            <div class="thumble">
+                <img src="{{ solution.image.url }}"  class="card-img-top  p-2"  >
             </div>
-		</div>
-	</div>
-	{% endfor %}
+            <div class="solutions-info">
+                <h2 class="card-title">{{ solution.title }}</h2>
+                <a style="text-decoration: none; color: green;" href=""><h2 class="card-title ">{{ solution.name }}</h2></a>
+
+                <div class="item_info p-2 d-flex justify-content-between">
+                    <p>1M+ Views</p>
+                    <button data-product="{{product.id}}"   type="button" class="btn btn-outline-success ml-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >View</button>
+                </div>
+            </div>
+
+        </article>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+
+<section>
+    <h2 class="section-title">Solutions For Maize</h2>
+    <div class="solutions">
+        {% for solution in solutions %}
+        <article class="solution">
+            <div class="thumble">
+                <img src="{{ solution.image.url }}"  class="card-img-top  p-2"  >
+            </div>
+            <div class="solutions-info">
+                <h2 class="card-title">{{ solution.title }}</h2>
+                <a style="text-decoration: none; color: green;" href=""><h2 class="card-title ">{{ solution.name }}</h2></a>
+
+                <div class="item_info p-2 d-flex justify-content-between">
+                    <p>1M+ Views</p>
+                    <button data-product="{{product.id}}"   type="button" class="btn btn-outline-success ml-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >View</button>
+                </div>
+            </div>
+
+        </article>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+
+<section>
+    <h2 class="section-title">Solutions For Wheat</h2>
+    <div class="solutions">
+        {% for solution in solutions %}
+        <article class="solution">
+            <div class="thumble">
+                <img src="{{ solution.image.url }}"  class="card-img-top  p-2"  >
+            </div>
+            <div class="solutions-info">
+                <h2 class="card-title">{{ solution.title }}</h2>
+                <a style="text-decoration: none; color: green;" href=""><h2 class="card-title ">{{ solution.name }}</h2></a>
+
+                <div class="item_info p-2 d-flex justify-content-between">
+                    <p>1M+ Views</p>
+                    <button data-product="{{product.id}}"   type="button" class="btn btn-outline-success ml-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >View</button>
+                </div>
+            </div>
+
+        </article>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="accordion">
+    <button class="btn btn-primary m-5" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Puddy</button>
+
+<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    <div class="solution_items p-5 ">
+        {% for solution in solutions %}
+        <div class="pb-5">
+            <div class="solution_item">
+                <div class="image p-2 ml-5 pl-5">
+                    <img style="border-radius: 10px; width: 80%; height: 30%;" src="{{ solution.image.url }}"  class="card-img-top "  >
+                    <div class="card-body">
+                        <h1 class="card-title">{{ solution.name }}</h1>
+                        <h2 class="card-title">{{ solution.title }}</h2>
+                        <p class="card-text">{{ solution.description }}</p>
+                        {% if solution.url %}
+                        <h6><a style="text-decoration: none;color: tomato;" href="{{ solution.url }}">Show Details...</a></h6>
+                        {% endif %}
+                    </div>    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
-<p class="text-center text-warning pt-3">copy right <i class='bx bx-copyright'></i> E Farmer</p>
+
+
 
 
 {% endblock content %}
