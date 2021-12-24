@@ -1,6 +1,23 @@
 {% extends 'farmer/main.html' %}
 {% load static %}
 {% block content %}
+<style>
+    .profile_items{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+
+ 
+}
+@media (max-width : 750px) {
+    .profile_items{
+        grid-template-columns: repeat(1, 1fr);
+    }
+   
+    
+}
+
+</style>
 
 <h1 style="padding-top : 50px;" class="mt-5 ml-5"  >{{ user }}</h1>
 <p class="ml-5"><a href=""> Home Page</a> / <a href="">Profile</a></p>

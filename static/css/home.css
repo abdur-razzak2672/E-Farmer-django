@@ -23,18 +23,4 @@
     font-size: 30px;
 }
 
-.profile_items{
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
-
- 
-}
-@media (max-width : 750px) {
-    .profile_items{
-        grid-template-columns: repeat(1, 1fr);
-    }
-   
-    
-}
 
