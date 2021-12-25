@@ -14,7 +14,9 @@ def register(request):
         
     else:
         form = UserCreationForm()
-            
+
+    if request.user.is_authenticated:
+        return redirect('homepage')       
     context = {'form':form}
     return render(request, 'authenticate/register.html', context)
 
