@@ -122,6 +122,12 @@
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav_list">
+            <li>
+                <a href="{% url 'homepage' %}">
+                    <i class = 'bx bx-home-alt'></i>
+                    <span class="links_name">Home</span>
+                </a>
+            </li>
             <div id="profile">
                 <li >
                     <a  href="{% url 'profile' %}">
@@ -130,12 +136,15 @@
                     </a>
                 </li>
             </div>
-            <li>
-                <a href="{% url 'homepage' %}">
-                    <i class = 'bx bx-home-alt'></i>
-                    <span class="links_name">Home</span>
-                </a>
-            </li>
+
+            <div id="product">
+                <li >
+                    <a  href="{% url 'profile' %}">
+                        <img class="ml-2" style="width: 35px; height: 35px; object-fit: cover; border-radius: 12px;" src="{% static 'images/product.png' %}" alt="">
+                        <span class="links_name pl-3">Your Product</span>
+                    </a>
+                </li>
+            </div>
             
             <li>
                 <a href="{% url 'store' %}">
@@ -168,9 +177,18 @@
                     <span class="links_name">About</span>
                 </a>
             </li>
+            <div id="admin">
+                <li>
+                    <a  href="{% url 'admin:index' %}">
+                        <i class='bx bx-user-circle'></i>
+                        <span class="links_name pl-3">Admin Login</span>
+                    </a>
+                </li>
+            </div>
             
             
         </ul>
+        
         {% if user.is_authenticated %}
         <div class="profile_content">
             <div class="profile">
@@ -273,6 +291,13 @@
     <script>
         if(user == 'AnonymousUser'){
             document.getElementById('profile').innerHTML = ''
+            document.getElementById('product').innerHTML = ''
+        }
+        
+    </script>
+    <script>
+        if(user!='AnonymousUser'){
+            document.getElementById('admin').innerHTML = ''
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
