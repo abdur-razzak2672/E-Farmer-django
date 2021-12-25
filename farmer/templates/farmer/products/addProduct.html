@@ -1,0 +1,22 @@
+ 
+{% extends 'farmer/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="forms_items">
+    <form action="" method="POST" class="form_control1">
+        <h1 class="text-center">Add Product</h1>
+        <div class="m-5">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="text-center">
+                <button class = "bg-success rounded w-50" type="submit" class="btn btn-primary"><h5>Submit</h5></button>
+
+            </div>
+          
+        </div>
+    </form>
+  
+</div>
+{% endblock content %}
+

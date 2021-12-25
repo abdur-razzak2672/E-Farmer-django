@@ -1,0 +1,87 @@
+{% extends 'farmer/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .profile_items{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    
+
+ 
+}
+
+.items1{
+	display: grid;
+    grid-gap: 20px;
+    place-items: center;
+	grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width : 750px) {
+    .profile_items{
+        grid-template-columns: repeat(1, 1fr);
+    }
+   
+    
+}
+
+</style>
+
+<h1 style="padding-top : 50px;" class="mt-5 ml-5"  >{{ user }}</h1>
+<p class="ml-5"><a href=""> DashBoard</a> / <a href="">Profile</a></p>
+
+<div class="m-5">
+    <div class="profile_items gy-5">
+        <div class="w-75 ml-5 ">
+            <div style="background-color: #e9c99e;" class="p-3 border border text-center">
+                <h3>Add Item</h3>
+
+                <div class="mt-3">
+                    <h4 class="bg-success">Seed Product</h4>
+                    <div class="text-center ml-5 pl-5 mt-3 mb-5" style="display: flex;">
+                        <img style="width: 100px ;height: 100px;" class = "mr-2 rounded" src="{% static 'images/jute_seeds.jpg' %}" class="rounded" alt="...">
+                        <a style="text-decoration: none;" href="{% url 'addProduct' %}"><h1 style="border: 1px solid green; " class="p-4">+</h1></a>
+                    </div>
+
+                </div>
+                <div class="mt-3">
+                    <h4 class="bg-warning">Fartilizer Product</h4>
+                    <div class="text-center ml-5 pl-5 mt-3 mb-5" style="display: flex;">
+                        <img style="width: 100px ;height: 100px;" class = "mr-2 rounded" src="{% static 'images/Pic_3.png' %}" class="rounded" alt="...">
+                        <a style="text-decoration: none;" href="{% url 'addProduct' %}"><h1 style="border: 1px solid green; " class="p-4">+</h1></a>
+                    </div>
+
+                </div>
+                <div class="mt-3">
+                    <h4 class="bg-info">Pesticide Product</h4>
+                    <div class="text-center ml-5 pl-5 mt-3 mb-5" style="display: flex;">
+                        <img style="width: 100px ;height: 100px;" class = "mr-2 rounded" src="{% static 'images/Wheet_seed.jpg.png' %}" class="rounded" alt="...">
+                        <a style="text-decoration: none;" href="{% url 'addProduct' %}"><h1 style="border: 1px solid green; " class="p-4">+</h1></a>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>    
+        <div class="w-100 style">
+            <div style="background-color: #e9c99e;" class="p-3 border text-center">
+                <h1>Your Product</h1>
+                <h4 class="bg-info mt-3">Seed Product</h4>
+             
+                <div class = "mt-3 mb-5 items1">
+                       {% for product in products %}
+                    <div style="display: flex; align-items: center;">
+                        <img class="thumbnail p-2 w-25" src="{{product.imageURL}}">
+                        <h5>{{product.name}}</h5>
+                    </div>
+                {% endfor %}
+                </div>
+                <h4 class="bg-info mt-3">Fartilizer Product</h4>
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

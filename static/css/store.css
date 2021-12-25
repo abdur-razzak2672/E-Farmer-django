@@ -18,12 +18,10 @@ body{
     display: grid;
     grid-gap: 20px;
     place-items: center;
+	grid-template-columns: repeat(5, 1fr);
  
 }
 
-.items{
-    grid-template-columns: repeat(5, 1fr);
-}
 
 
 

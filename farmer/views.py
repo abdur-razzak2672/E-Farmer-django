@@ -1,10 +1,38 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import JsonResponse
 import json
 import datetime
 from .models.seedModels import * 
 from .utils import cookieCart, cartData, guestOrder
 from django.db.models import Q
+from . forms import ProductForm
+
+def dashboard(request): 
+
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+
+	products = Product.objects.all()
+	context = {'products':products, 'cartItems':cartItems}
+	return render(request, 'farmer/products/dashboard.html', context)
+
+def addProduct(request):
+	form = ProductForm()
+	if request.method == 'POST':
+		form = ProductForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('dashboard')
+
+	context = {
+		"form":form
+	}
+	return render(request, 'farmer/products/addProduct.html', context)
+
+
 
 def search(request):
     	
